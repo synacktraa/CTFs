@@ -71,10 +71,12 @@ It looks like the password is of `12` characters. This `IF` statement checks if 
 > Given that we know each character in the password is added by either 0xCafe or 51966, we can simply subtract each element in the variable p by the same number and sort them in ascending order. Since performing this task manually is boring, let's utilize Python to automate the process.
 
 ```py
+import sys
+
 import re
 import requests
 
-URL = "https://encoderspro.com/login-challenge-encoderspro-bughunting-batch/"
+URL = sys.argv[1]
 res = requests.get(URL)
 content = res.content.decode()
 
@@ -94,7 +96,7 @@ for idx in range(12):
 
 Making a request to the target site and storing the output in content variable
 ```py
-URL = "https://encoderspro.com/login-challenge-encoderspro-bughunting-batch/"
+URL = sys.argv[1]
 res = requests.get(URL)
 content = res.content.decode()
 ```
@@ -122,7 +124,7 @@ Converting the ASCII value to human-readable strings using the built-in `chr()` 
 ----
 Run this script
 ```sh
-python3 get_password.py
+python3 get_password.py "[Login Challenge URL]"
 ```
 Output
 ```sh
