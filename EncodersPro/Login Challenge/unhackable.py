@@ -1,8 +1,11 @@
+import sys
+
 import re
 import requests
 
+URL = sys.argv[1]
 # making a request to the target site
-res = requests.get("https://encoderspro.com/login-challenge-encoderspro-bughunting-batch/")
+res = requests.get(URL)
 # storing the UTF-8 decoded content
 content = res.content.decode()
 
